@@ -136,6 +136,7 @@ namespace Ecommerse.Controllers
         private async Task<User> RegisterExternalUserAsync(ExternalAuthUserInfo externalUser)
         {
             var user = await _userRegistrationManager.RegisterAsync(
+                externalUser.RoleName,
                 externalUser.Name,
                 externalUser.Surname,
                 externalUser.EmailAddress,

@@ -17,6 +17,7 @@ class UserStore {
   @action
   async create(createUserInput: CreateOrUpdateUserInput) {
     let result = await userService.create(createUserInput);
+    console.log(result)
     this.users.items.push(result);
   }
 

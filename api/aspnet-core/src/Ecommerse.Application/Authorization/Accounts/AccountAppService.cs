@@ -38,6 +38,7 @@ namespace Ecommerse.Authorization.Accounts
         public async Task<RegisterOutput> Register(RegisterInput input)
         {
             var user = await _userRegistrationManager.RegisterAsync(
+                input.RoleName,
                 input.Name,
                 input.Surname,
                 input.EmailAddress,

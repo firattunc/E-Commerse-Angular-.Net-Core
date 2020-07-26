@@ -2,6 +2,7 @@
 {
     public class ExternalAuthUserInfo
     {
+        public string RoleName{ get; set; }
         public string ProviderKey { get; set; }
 
         public string Name { get; set; }

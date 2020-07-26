@@ -16,6 +16,8 @@ namespace Ecommerse.Authorization.Accounts.Dto
         [Required]
         [StringLength(AbpUserBase.MaxSurnameLength)]
         public string Surname { get; set; }
+        [Required]        
+        public string RoleName { get; set; }
 
         [Required]
         [StringLength(AbpUserBase.MaxUserNameLength)]

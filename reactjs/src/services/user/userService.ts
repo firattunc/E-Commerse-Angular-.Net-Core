@@ -9,6 +9,9 @@ import http from '../httpService';
 
 class UserService {
   public async create(createUserInput: CreateOrUpdateUserInput) {
+    createUserInput.isActive=true;
+    createUserInput.roleNames=[];
+    createUserInput.roleNames.push('Customer')
     let result = await http.post('api/services/app/User/Create', createUserInput);
     return result.data.result;
   }
