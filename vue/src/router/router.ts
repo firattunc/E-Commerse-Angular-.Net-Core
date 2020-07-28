@@ -25,7 +25,7 @@ export const locking = {
     name: 'locking',
     component: () => import('../components/lockscreen/components/locking-page.vue')
 };
-export const loginRouter: Router = {
+export const loginRouter: Router = {    
     path: '/',
     name: 'login',
     meta: {
@@ -40,7 +40,8 @@ export const otherRouters: Router = {
     meta: { title: 'ManageMenu' },
     component: main,
     children: [
-        { path: 'home', meta: { title: 'HomePage' }, name: 'home', component: () => import('../views/home/home.vue') }
+        { path: 'home', meta: { title: 'HomePage' }, name: 'home', component: () => import('../views/home/home.vue') },
+        { path: 'customerlogin', meta: { title: 'Customer Login' }, name: 'customerlogin', component: () => import('../views/customerlogin.vue') }        
     ]
 }
 export const appRouters: Array<Router> = [{
@@ -56,7 +57,7 @@ export const appRouters: Array<Router> = [{
         { path: 'tenant', permission: 'Pages.Tenants', meta: { title: 'Tenants' }, name: 'tenant', component: () => import('../views/setting/tenant/tenant.vue') }
     ]
 }]
-export const routers = [
+export const routers = [ 
     loginRouter,
     locking,
     ...appRouters,

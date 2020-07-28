@@ -33,7 +33,7 @@ class UserModule extends ListModule<UserState,any,User>{
             context.state.totalCount=page.totalCount;
             context.state.list=page.items;
         },
-        async create(context:ActionContext<UserState,any>,payload:any){
+        async create(context:ActionContext<UserState,any>,payload:any){            
             await Ajax.post('/api/services/app/User/Create',payload.data);
         },
         async update(context:ActionContext<UserState,any>,payload:any){

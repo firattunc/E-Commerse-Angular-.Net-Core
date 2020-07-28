@@ -26,9 +26,9 @@ router.beforeEach((to, from, next) => {
     }else if (Cookies.get('locking') === '0' && to.name === 'locking') {
         next(false);
     } else {
-        if (!Util.abp.session.userId&& to.name !== 'login') {
+        if (!Util.abp.session.userId&& to.name !== 'customerlogin') {
             next({
-                name: 'login'
+                name: 'customerlogin'
             });
         } else if (!!Util.abp.session.userId && to.name === 'login') {
             Util.title(to.meta.title);

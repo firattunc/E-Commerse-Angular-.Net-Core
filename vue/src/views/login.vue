@@ -88,6 +88,7 @@ export default class Login extends AbpBase {
     ]
   }
   created(){
+
   }
 }
 </script>

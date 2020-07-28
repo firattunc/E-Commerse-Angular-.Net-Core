@@ -1,5 +1,5 @@
 <style lang="less">
-
+    @import "./main.less";
 </style>
 <template>
   <div class="main" :class="{ 'main-hide-text': shrink }">
@@ -16,20 +16,31 @@
               ><a href="#" class="ml-1">Get flat 35% off on orders over $50!</a>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
-              <ul class="menu list-inline mb-0">
-                <li class="list-inline-item">
-                  <a href="#" data-toggle="modal" data-target="#login-modal"
-                    >Login</a
-                  >
-                </li>
-                <li class="list-inline-item">
-                  <a href="register.html">Register</a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="contact.html">Contact</a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#">Recently viewed</a>
+              <ul class="menu list-inline mb-0">               
+                        
+                <li class="list-inline-item" v-if="!this.isLoggedIn"> 
+                 
+                   <router-link to="/main/customerlogin">Login/Register</router-link>                    
+                </li>              
+                 <li class="list-inline-item" v-if="this.isLoggedIn">
+                    
+                     <div class="user-dropdown-menu-con">
+                        <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
+                        
+                            <Dropdown transfer trigger="click" @on-click="handleClickUserDropdown">
+                                 <label for=""><language-list></language-list></label>  
+                                <a href="javascript:void(0)">
+                                    <span class="main-user-name">{{ userName }}</span>
+                                    <Icon type="arrow-down-b"></Icon>
+                                </a>
+                                <DropdownMenu slot="list">
+                                    <!-- <DropdownItem name="ownSpace">{{L('UserProfile')}}</DropdownItem> -->
+                                    <DropdownItem name="loginout" divided>{{L('Logout')}}</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+                            <span class="avatar" style="background: #619fe7;margin-left: 10px;"><img src="../images/usericon.jpg" /></span>
+                        </Row>
+                    </div>
                 </li>
               </ul>
             </div>
@@ -512,7 +523,7 @@
               </li>
             </ul>
             <div class="navbar-buttons d-flex justify-content-end">
-              <!-- /.nav-collapse-->
+              <!-- /.nav-collapse-->                            
               <div
                 id="search-not-mobile"
                 class="navbar-collapse collapse"
@@ -701,10 +712,27 @@ import AbpBase from "../lib/abpbase";
 })
 export default class Main extends AbpBase {
   shrink: boolean = false;
+   HandleLogout(){
+      this.$store.commit('app/logout', this);
+            util.abp.auth.clearToken();
+            location.reload();
+  }
+  
   get userName() {
     return this.$store.state.session.user
       ? this.$store.state.session.user.name
       : "";
+  }
+  get emailAddress(){
+    return this.$store.state.session.user
+      ? this.$store.state.session.user.emailAddress
+      : "";
+  }
+  get isLoggedIn(){    
+    if(this.$store.state.session.user===null)
+    return false;
+     
+     return true;
   }
   isFullScreen: boolean = false;
   messageCount: string = "0";

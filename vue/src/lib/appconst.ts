@@ -4,7 +4,7 @@ const AppConsts= {
         defaultAdminUserName: 'admin'
     },
     localization:{
-        defaultLocalizationSourceName: 'VueEcommerse'
+        defaultLocalizationSourceName: 'Ecommerse'
     },
     authorization:{
         encrptedAuthTokenName: 'enc_auth_token'
