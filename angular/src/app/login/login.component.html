@@ -1,0 +1,239 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- breadcrumb-->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li aria-current="page" class="breadcrumb-item active">New account / Sign in</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-lg-6">
+        <div class="box">
+          <h1>New account</h1>
+          <p class="lead">Not our registered customer yet?</p>
+          <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
+          <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
+          <hr>
+          <form autocomplete="off" #registerForm="ngForm" (ngSubmit)="save()">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  placeholder="{{ 'Name' | localize }}"
+                  required
+                  maxlength="64"
+                  [(ngModel)]="model.name"
+                  #nameModel="ngModel"
+                  #nameEl
+                />
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-arrow-left"></span>
+                  </div>
+                </div>
+              </div>
+              <abp-validation-summary
+                [control]="nameModel"
+                [controlEl]="nameEl"
+              ></abp-validation-summary>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="surname"
+                  placeholder="{{ 'Surname' | localize }}"
+                  required
+                  maxlength="64"
+                  [(ngModel)]="model.surname"
+                  #surnameModel="ngModel"
+                  #surnameEl
+                />
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-arrow-left"></span>
+                  </div>
+                </div>
+              </div>
+              <abp-validation-summary
+                [control]="surnameModel"
+                [controlEl]="surnameEl"
+              ></abp-validation-summary>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="emailAddress"
+                  placeholder="{{ 'EmailAddress' | localize }}"
+                  required
+                  maxlength="256"
+                  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$"
+                  [(ngModel)]="model.emailAddress"
+                  #emailAddressModel="ngModel"
+                  #emailAddressEl
+                />
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
+                </div>
+              </div>
+              <abp-validation-summary
+                [control]="emailAddressModel"
+                [controlEl]="emailAddressEl"
+              ></abp-validation-summary>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="userName"
+                  placeholder=" {{ 'UserName' | localize }}"
+                  required
+                  maxlength="32"
+                  [(ngModel)]="model.userName"
+                  #userNameModel="ngModel"
+                  #userNameEl
+                />
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                  </div>
+                </div>
+              </div>
+              <abp-validation-summary
+                [control]="userNameModel"
+                [controlEl]="userNameEl"
+              ></abp-validation-summary>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  placeholder="{{ 'Password' | localize }}"
+                  [(ngModel)]="model.password"
+                  required
+                  maxlength="32"
+                  #passwordModel="ngModel"
+                  #passwordEl
+                />
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+              </div>
+              <abp-validation-summary
+                [control]="passwordModel"
+                [controlEl]="passwordEl"
+              ></abp-validation-summary>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-block"
+                  [disabled]="!registerForm.form.valid || saving"
+                >
+                  {{ "Register" | localize }}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="box">
+          <h1>Login</h1>
+          <p class="lead">Already our customer?</p>
+          <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+          <hr>
+          <form novalidate autocomplete="off" #loginForm="ngForm" (ngSubmit)="login()">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="userNameOrEmailAddress"
+                  [(ngModel)]="authService.authenticateModel.userNameOrEmailAddress"
+                  [placeholder]="'UserNameOrEmail' | localize"
+                  required
+                  maxlength="256"
+                  #userNameOrEmailAddressModel="ngModel"
+                  #userNameOrEmailAddressEl
+                />
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                  </div>
+                </div>
+              </div>
+              <abp-validation-summary
+                [control]="userNameOrEmailAddressModel"
+                [controlEl]="userNameOrEmailAddressEl"
+              ></abp-validation-summary>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  [(ngModel)]="authService.authenticateModel.password"
+                  [placeholder]="'Password' | localize"
+                  required
+                  maxlength="32"
+                  #passwordModel="ngModel"
+                  #passwordEl
+                />
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
+                </div>
+              </div>
+              <abp-validation-summary
+                [control]="passwordModel"
+                [controlEl]="passwordEl"
+              ></abp-validation-summary>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-8">
+                <div class="custom-control custom-checkbox">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="rememberMe"
+                    name="rememberMe"
+                    [(ngModel)]="authService.rememberMe"
+                  />
+                  <label for="rememberMe" class="custom-control-label">
+                    {{ "RememberMe" | localize }}
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-block"
+                  [disabled]="!loginForm.form.valid || submitting"
+                >
+                  {{ "LogIn" | localize }}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

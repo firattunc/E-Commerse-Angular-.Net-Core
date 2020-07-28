@@ -35,7 +35,7 @@ export class AppAuthService {
             abp.appPath
         );
         if (reload !== false) {
-            location.href = AppConsts.appBaseUrl;
+            location.href = '/app/home';
         }
     }
 

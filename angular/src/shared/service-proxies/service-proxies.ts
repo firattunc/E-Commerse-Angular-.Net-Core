@@ -1831,6 +1831,7 @@ export class RegisterInput implements IRegisterInput {
     emailAddress: string | undefined;
     password: string | undefined;
     captchaResponse: string | undefined;
+    roleName:string;
 
     constructor(data?: IRegisterInput) {
         if (data) {
@@ -1849,6 +1850,7 @@ export class RegisterInput implements IRegisterInput {
             this.emailAddress = data["emailAddress"];
             this.password = data["password"];
             this.captchaResponse = data["captchaResponse"];
+            this.roleName=data["roleName"];
         }
     }
 
@@ -1867,6 +1869,7 @@ export class RegisterInput implements IRegisterInput {
         data["emailAddress"] = this.emailAddress;
         data["password"] = this.password;
         data["captchaResponse"] = this.captchaResponse;
+        data["roleName"]=this.roleName;
         return data; 
     }
 
@@ -1885,6 +1888,7 @@ export interface IRegisterInput {
     emailAddress: string | undefined;
     password: string | undefined;
     captchaResponse: string | undefined;
+    roleName:string;
 }
 
 export class RegisterOutput implements IRegisterOutput {

@@ -11,7 +11,7 @@ export class AppConsts {
     };
 
     static readonly localization = {
-        defaultLocalizationSourceName: 'AngularEcommerse'
+        defaultLocalizationSourceName: 'Ecommerse'
     };
 
     static readonly authorization = {
