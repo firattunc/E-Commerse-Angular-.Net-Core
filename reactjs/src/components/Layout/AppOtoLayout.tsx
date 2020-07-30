@@ -15,7 +15,7 @@ import { appOtoRouter } from '../Router/router.config';
 
 // import DocumentTitle from 'react-document-title';
 
-function AppOtoLayout() {
+function AppOtoLayout() {      
   return (
       <>
       <AppOtoHeader />

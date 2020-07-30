@@ -34,17 +34,17 @@ export const appOtoRouter: any = [
     showInMenu: false,
   },
   {
-    path: '/appoto/customerregister',
-    name: 'register',
-    title: 'register',
-    component: LoadableComponent(() => import('../../scenes/CustomerRegister')),
-    showInMenu: false,
-  },
-  {
     path: '/appoto/home',
     name: 'home',
     title: 'Home',
     component: LoadableComponent(() => import('../../scenes/Home')),
+    showInMenu: false,
+  },
+  {
+    path: '/appoto/products',
+    name: 'products',
+    title: 'Products',
+    component: LoadableComponent(() => import('../../scenes/Products')),
     showInMenu: false,
   },
 ];

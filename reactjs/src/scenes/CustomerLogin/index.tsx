@@ -12,6 +12,7 @@ import SessionStore from '../../stores/sessionStore';
 import Stores from '../../stores/storeIdentifier';
 import TenantAvailabilityState from '../../services/account/dto/tenantAvailabilityState';
 import rules from './index.validation';
+import CustomerRegister from '../CustomerRegister';
 
 const FormItem = Form.Item;
 declare var abp: any;
@@ -85,57 +86,70 @@ class CustomerLogin extends React.Component<ILoginProps> {
     if (this.props.authenticationStore!.isAuthenticated) return <Redirect to={from} />;
 
     const { getFieldDecorator } = this.props.form;
-    return (
+    return (      
       <div className="container">
-      <div className="row">
-        <div className="col-lg-12">              
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item"><Link to="/appoto/home">Home</Link></li>
-              <li aria-current="page" className="breadcrumb-item active">Sign in</li>
-            </ol>
-          </nav>
-        </div>
+        <div className="row">
+       
+          <div className="col-lg-12">
+            <nav aria-label="breadcrumb">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link to="/appoto/home">Home</Link>
+                </li>
+                <li aria-current="page" className="breadcrumb-item active">
+                  Sign in
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div className="col-lg-6">
+        <CustomerRegister/>
         </div>
         <div className="col-lg-6">
           <div className="box">
             <h1>Login</h1>
             <p className="lead">Already our customer?</p>
-            <p className="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-            <hr/>
+            <p className="text-muted">
+              Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
+              ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat
+              eleifend leo.
+            </p>
+            <hr />
             <Form className="" onSubmit={this.handleSubmit}>
-                  <div className="form-group">
-                    <label >Email</label>
-                    <FormItem>
-                    {getFieldDecorator('userNameOrEmailAddress', { rules: rules.userNameOrEmailAddress })(
-                      <Input placeholder={L('UserNameOrEmail')} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} size="large" />
-                    )}
-                  </FormItem>
-                  </div>
-                  <div className="form-group">
-                    <label >Password</label>
-                    <FormItem>
-                    {getFieldDecorator('password', { rules: rules.password })(
-                      <Input
-                        placeholder={L('Password')}
-                        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                        type="password"
-                        size="large"
-                      />
-                    )}
-                  </FormItem>
-                  </div>
-                  <div className="text-center">
-                  <Button style={{ backgroundColor: '#f5222d', color: 'white' }} htmlType={'submit'} type="danger">
-                        {L('LogIn')}
-                      </Button>
-                  </div>
-                </Form>
-   
-  </div>
-  </div>
-  </div>
-  
+              <div className="form-group">
+                <label>Email</label>
+                <FormItem>
+                  {getFieldDecorator('userNameOrEmailAddress', { rules: rules.userNameOrEmailAddress })(
+                    <Input placeholder={L('UserNameOrEmail')} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} size="large" />
+                  )}
+                </FormItem>
+              </div>
+              <div className="form-group">
+                <label>Password</label>
+                <FormItem>
+                  {getFieldDecorator('password', { rules: rules.password })(
+                    <Input
+                      placeholder={L('Password')}
+                      prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                      type="password"
+                      size="large"
+                    />
+                  )}
+                </FormItem>
+              </div>
+              <div className="text-center">
+                <Button style={{ backgroundColor: '#f5222d', color: 'white' }} htmlType={'submit'} type="danger">
+                  {L('LogIn')}
+                </Button>
+              </div>
+            </Form>
+          </div>
+        </div>
+        
+        </div>
+       
+      </div>
+         
     );
   }
 }
