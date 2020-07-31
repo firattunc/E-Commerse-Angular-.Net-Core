@@ -41,7 +41,8 @@ export const otherRouters: Router = {
     component: main,
     children: [
         { path: 'home', meta: { title: 'HomePage' }, name: 'home', component: () => import('../views/home/home.vue') },
-        { path: 'customerlogin', meta: { title: 'Customer Login' }, name: 'customerlogin', component: () => import('../views/customerlogin.vue') }        
+        { path: 'customerlogin', meta: { title: 'Customer Login' }, name: 'customerlogin', component: () => import('../views/customerlogin.vue') },
+        { path: 'products', meta: { title: 'Products' }, name: 'products', component: () => import('../views/products/products.vue') }        
     ]
 }
 export const appRouters: Array<Router> = [{
